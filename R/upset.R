@@ -18,42 +18,49 @@ globalVariables(c(
 #'
 #' @export
 #' @importFrom ggplot2 theme_minimal element_blank
-upset_themes = list(
-  intersections_matrix=list(
-    theme_minimal(),
-    theme(
-      # hide intersections
-      axis.text.x=element_blank(),
-      axis.ticks.x=element_blank(),
-      # hide group title
-      axis.title.y=element_blank()
-    )
-  ),
-  'Intersection size'=list(
-    theme_minimal(),
-    theme(
-      axis.text.x=element_blank(),
-      axis.title.x=element_blank()
-    )
-  ),
-  overall_sizes=list(
-    theme_minimal(),
-    theme(
-      # hide groups
-      axis.title.y=element_blank(),
-      axis.text.y=element_blank(),
-      axis.ticks.y=element_blank()
-    )
-  ),
-  default=list(
-    theme_minimal(),
-    theme(
-      axis.text.x=element_blank(),
-      axis.title.x=element_blank()
+upset_themes <- NULL
+
+.onLoad <- function(lib, pkg) {
+  upset_themes <<- new_upset_themes()
+}
+
+new_upset_themes <- function() {
+  list(
+    intersections_matrix=list(
+      theme_minimal(),
+      theme(
+        # hide intersections
+        axis.text.x=element_blank(),
+        axis.ticks.x=element_blank(),
+        # hide group title
+        axis.title.y=element_blank()
+      )
+    ),
+    'Intersection size'=list(
+      theme_minimal(),
+      theme(
+        axis.text.x=element_blank(),
+        axis.title.x=element_blank()
+      )
+    ),
+    overall_sizes=list(
+      theme_minimal(),
+      theme(
+        # hide groups
+        axis.title.y=element_blank(),
+        axis.text.y=element_blank(),
+        axis.ticks.y=element_blank()
+      )
+    ),
+    default=list(
+      theme_minimal(),
+      theme(
+        axis.text.x=element_blank(),
+        axis.title.x=element_blank()
+      )
     )
   )
-)
-
+}
 
 #' Default themes modified by specified arguments
 #'
